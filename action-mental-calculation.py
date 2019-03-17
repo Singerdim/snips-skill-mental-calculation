@@ -27,8 +27,8 @@ def create_question(oper=None):
     if oper is None or oper not in operations:
         oper = random.choice(operations)
 
-    x = random.randint(2, 12)
-    y = random.randint(2, 12)
+    x = random.randint(2, 10)
+    y = random.randint(2, 10)
 
     # make sure the answer is a positive integer
     question = None
@@ -55,7 +55,7 @@ def continue_lesson(response, session_id):
     SessionsStates[session_id]["step"] += 1
 
     if SessionsStates[session_id]["step"] == SessionsStates[session_id]["n_questions"]:
-        response += "Vous avez {} sur {} correctes. ".format(SessionsStates[session_id]["good"],
+        response += "Vous avez {} reponses correctes sur {}.".format(SessionsStates[session_id]["good"],
                                                                              SessionsStates[session_id]["n_questions"])
         percent_correct = float(SessionsStates[session_id]["good"]) / SessionsStates[session_id]["n_questions"]
         if percent_correct == 1.:
@@ -87,7 +87,7 @@ def user_request_quiz(hermes, intent_message):
     elif n_questions == 1:
         response = "On commence un test avec une question. "
     else:
-        response = "Je ne peux que vous faire un tesst avec un nombre positif de questions."
+        response = "Je ne peux que vous faire un test avec un nombre positif de questions."
         hermes.publish_end_session(session_id, response)
 
     # create first question
@@ -146,7 +146,7 @@ def user_quits(hermes, intent_message):
 
     # clean up
     del SessionsStates[session_id]
-    response = "Tres bien. ON s'arrete là mais recommencons ca tres vite!"
+    response = "Tres bien. On s'arrete là mais recommencons ca tres vite!"
 
     hermes.publish_end_session(session_id, response)
 
