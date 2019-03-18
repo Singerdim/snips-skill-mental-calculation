@@ -1,2 +1,2 @@
-hermes_python>=0.1
-pytz
+hermes_python
+future
