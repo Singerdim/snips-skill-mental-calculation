@@ -46,7 +46,7 @@ def create_question(oper=None):
     elif oper == "div":
         answer = x
         x = x * y
-        question = "Combien font {} divisés par {}?".format(x, y)
+        question = "Combien font {} divises par {}?".format(x, y)
 
     return question, answer
 
@@ -61,7 +61,7 @@ def continue_lesson(response, session_id):
         if percent_correct == 1.:
             response += "Vous etes au top!"
         elif percent_correct >= 0.75:
-            response += "Bien joué! Avec un peu plus d'entrainement vous serez au top."
+            response += "Bien joue! Avec un peu plus d'entrainement vous serez au top."
         elif percent_correct >= 0.5:
             response += "Pas mal. Vous devriez progresser en vous entrainant."
         else:
@@ -146,7 +146,7 @@ def user_quits(hermes, intent_message):
 
     # clean up
     del SessionsStates[session_id]
-    response = "Tres bien. On s'arrete là mais recommencons ca tres vite!"
+    response = "Tres bien. On s'arrete la mais recommencons ca tres vite!"
 
     hermes.publish_end_session(session_id, response)
 
